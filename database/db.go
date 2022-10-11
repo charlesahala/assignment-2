@@ -1,8 +1,8 @@
 package database
 
 import (
-	"fmt"
 	"assignment-2/models"
+	"fmt"
 	"log"
 
 	"gorm.io/driver/postgres"
@@ -10,13 +10,13 @@ import (
 )
 
 var (
-	host = "localhost"
-	user = "postgres"
+	host     = "localhost"
+	user     = "postgres"
 	password = "sukasuka"
-	dbPort = "5432"
-	dbname = "orders_by"
-	db *gorm.DB
-	err error
+	dbPort   = "5432"
+	dbname   = "orders_by"
+	db       *gorm.DB
+	err      error
 )
 
 func StartDB() {
@@ -27,7 +27,7 @@ func StartDB() {
 		log.Fatal("error connecting to database:", err)
 	}
 
-	db.Debug().AutoMigrate(models.Items{}, models.Orders{})
+	db.Debug().AutoMigrate(models.Item{}, models.Order{})
 }
 
 func GetDB() *gorm.DB {

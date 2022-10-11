@@ -1,9 +1,9 @@
 package models
 
-type Items struct {
-	ItemID      uint   `gorm:"primaryKey" json:"lineItemId"`
-	ItemCode    string `gorm:"not null" json:"itemCode"`
-	Description string `gorm:"not null" json:"description"`
-	Quantity    uint   `gorm:"not null" json:"quantity"`
-	OrderID     uint
+type Item struct {
+	ItemID      uint   `gorm:"primaryKey" json:"-"`
+	ItemCode    string `gorm:"foreignKey" json:"item_code"`
+	Description string `json:"description" form:"description"`
+	Quantity    uint   `json:"quantity" form:"quantity"`
+	OrderID     uint   `json:"-"`
 }

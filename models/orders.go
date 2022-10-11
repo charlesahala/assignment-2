@@ -2,9 +2,9 @@ package models
 
 import "time"
 
-type Orders struct {
-	OrderID uint `gorm:"primaryKey" json:"orderID"`
-	CustomerName string `gorm:"not null type:VARCHAR(50)" json:"customerName"`
-	OrderedAt time.Time `gorm:"not null" json:"orderedAt"`
-	Items []Items `json:"items"`
+type Order struct {
+	OrderID      uint      `gorm:"primaryKey" json:"-" form:"order_id" valid:"required~OrderID is required"`
+	OrderedAt    time.Time `gorm:"not null;type:timestamp;autoCreateTime" json:"orderedAt" valid:"required"`
+	CustomerName string    `gorm:"not null" json:"customer_name" form:"customer_name" valid:"required~Customer Name is required"`
+	Items        []Item
 }
